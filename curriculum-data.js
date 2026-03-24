@@ -1,83 +1,100 @@
 // All curriculum data - 240 days of content
 const CURRICULUM = {};
 
-// Phase 0: Foundations (Days 1-20)
-const phase0Data = {
-    week0: [ // Days 1-5
-        { watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: 'Cybersecurity Fundamentals',
-          read: 'https://www.cisa.gov/cybersecurity-basics', readText: 'CISA Cybersecurity Basics',
-          lab: 'https://tryhackme.com/r/room/introtocyber', labText: 'TryHackMe: Intro to Cyber Security',
-          notes: '📝 Cybersecurity Fundamentals - CIA triad, basic security concepts' },
-        { watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: 'Security Principles',
-          read: 'https://csrc.nist.gov/glossary', readText: 'NIST Cybersecurity Glossary',
-          lab: 'https://tryhackme.com/r/room/securityprinciples', labText: 'Security Principles',
-          notes: '📝 Security Principles - Authentication, authorization, accounting' },
-        { watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: 'CIA Triad Deep Dive',
-          read: 'https://www.sans.org/security-resources/', readText: 'SANS Reading Room',
-          lab: 'https://tryhackme.com/r/room/introtois', labText: 'Intro to Information Security',
-          notes: '📝 CIA Triad - Confidentiality, Integrity, Availability' },
-        { watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: 'Threats & Vulnerabilities',
-          read: 'https://owasp.org/www-project-top-ten/', readText: 'OWASP Top 10',
-          lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: 'Vulnerabilities 101',
-          notes: '📝 Threats & Vulnerabilities - Risk assessment basics' },
-        { watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: 'Security Controls',
-          read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: 'ISO 27001 Overview',
-          lab: 'https://tryhackme.com/r/room/securityframeworks', labText: 'Security Frameworks',
-          notes: '📝 Security Controls - Administrative, technical, physical controls' }
-    ],
-    week1: [ // Days 6-10 - repeat similar structure
-        { watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: 'Cybersecurity Review',
-          read: 'https://www.cisa.gov/cybersecurity-basics', readText: 'CISA Basics Review',
-          lab: 'https://tryhackme.com/r/room/introtocyber', labText: 'TryHackMe: Intro Review',
+// Phase 0: Foundations (Days 1-20) - Complete data with ALL sections
+function buildPhase0() {
+    const weeks = [];
+    
+    // Week 1 (Days 1-5)
+    weeks[0] = [
+        { 
+            watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: 'Watch: Cybersecurity Fundamentals',
+            read: 'https://www.cisa.gov/cybersecurity-basics', readText: 'Read: CISA Cybersecurity Basics',
+            lab: 'https://tryhackme.com/r/room/introtocyber', labText: 'Lab: TryHackMe Intro to Cyber',
+            notes: '📝 Cybersecurity Fundamentals - CIA triad, basic security concepts'
+        },
+        { 
+            watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: 'Watch: Security Principles',
+            read: 'https://csrc.nist.gov/glossary', readText: 'Read: NIST Glossary',
+            lab: 'https://tryhackme.com/r/room/securityprinciples', labText: 'Lab: Security Principles',
+            notes: '📝 Security Principles - Authentication, authorization, accounting'
+        },
+        { 
+            watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: 'Watch: CIA Triad Deep Dive',
+            read: 'https://www.sans.org/security-resources/', readText: 'Read: SANS Reading Room',
+            lab: 'https://tryhackme.com/r/room/introtois', labText: 'Lab: Intro to Information Security',
+            notes: '📝 CIA Triad - Confidentiality, Integrity, Availability'
+        },
+        { 
+            watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: 'Watch: Threats & Vulnerabilities',
+            read: 'https://owasp.org/www-project-top-ten/', readText: 'Read: OWASP Top 10',
+            lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: 'Lab: Vulnerabilities 101',
+            notes: '📝 Threats & Vulnerabilities - Risk assessment basics'
+        },
+        { 
+            watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: 'Watch: Security Controls',
+            read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: 'Read: ISO 27001',
+            lab: 'https://tryhackme.com/r/room/securityframeworks', labText: 'Lab: Security Frameworks',
+            notes: '📝 Security Controls - Administrative, technical, physical controls'
+        }
+    ];
+    
+    // Week 2 (Days 6-10)
+    weeks[1] = [
+        { watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: 'Watch: Cybersecurity Review',
+          read: 'https://www.cisa.gov/cybersecurity-basics', readText: 'Read: CISA Review',
+          lab: 'https://tryhackme.com/r/room/introtocyber', labText: 'Lab: TryHackMe Review',
           notes: '📝 Review Week 1 concepts - Practice and reinforce' },
-        { watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: 'Security Principles Review',
-          read: 'https://csrc.nist.gov/glossary', readText: 'NIST Glossary Review',
-          lab: 'https://tryhackme.com/r/room/securityprinciples', labText: 'Security Principles Lab',
+        { watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: 'Watch: Security Principles Review',
+          read: 'https://csrc.nist.gov/glossary', readText: 'Read: NIST Glossary Review',
+          lab: 'https://tryhackme.com/r/room/securityprinciples', labText: 'Lab: Security Principles Lab',
           notes: '📝 Review security principles and apply to scenarios' },
-        { watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: 'CIA Triad Examples',
-          read: 'https://www.sans.org/security-resources/', readText: 'SANS Articles',
-          lab: 'https://tryhackme.com/r/room/introtois', labText: 'InfoSec Lab',
+        { watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: 'Watch: CIA Triad Examples',
+          read: 'https://www.sans.org/security-resources/', readText: 'Read: SANS Articles',
+          lab: 'https://tryhackme.com/r/room/introtois', labText: 'Lab: InfoSec Lab',
           notes: '📝 Real-world CIA triad examples' },
-        { watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: 'Vulnerability Assessment',
-          read: 'https://owasp.org/www-project-top-ten/', readText: 'OWASP Top 10 Deep Dive',
-          lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: 'Vulnerabilities Lab',
+        { watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: 'Watch: Vulnerability Assessment',
+          read: 'https://owasp.org/www-project-top-ten/', readText: 'Read: OWASP Deep Dive',
+          lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: 'Lab: Vulnerabilities Lab',
           notes: '📝 How to identify and assess vulnerabilities' },
-        { watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: 'Security Controls Review',
-          read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: 'ISO 27001 Controls',
-          lab: 'https://tryhackme.com/r/room/securityframeworks', labText: 'Frameworks Lab',
+        { watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: 'Watch: Security Controls Review',
+          read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: 'Read: ISO 27001 Controls',
+          lab: 'https://tryhackme.com/r/room/securityframeworks', labText: 'Lab: Frameworks Lab',
           notes: '📝 Mapping controls to business requirements' }
-    ]
-};
-
-// Build CURRICULUM for Phase 0 (repeat for other phases similarly)
-CURRICULUM[0] = {};
-for (let w = 0; w < 4; w++) {
-    CURRICULUM[0][w] = [];
-    for (let d = 0; d < 5; d++) {
-        const data = phase0Data[`week${w}`] ? phase0Data[`week${w}`][d] : phase0Data.week0[d % 5];
-        CURRICULUM[0][w][d] = {
-            watch: { url: data.watch, text: data.watchText },
-            read: { url: data.read, text: data.readText },
-            lab: { url: data.lab, text: data.labText },
-            notes: data.notes
-        };
-    }
+    ];
+    
+    // Week 3 (Days 11-15) - Repeat Week 1
+    weeks[2] = weeks[0].map(day => ({
+        ...day,
+        notes: `📝 ${day.notes.split(' - ')[0]} - Practice and reinforce`
+    }));
+    
+    // Week 4 (Days 16-20) - Repeat Week 2
+    weeks[3] = weeks[1].map(day => ({
+        ...day,
+        notes: `📝 ${day.notes.split(' - ')[0]} - Apply to real scenarios`
+    }));
+    
+    return weeks;
 }
 
-// Fill remaining phases with placeholder data
+// Build Phase 0
+CURRICULUM[0] = buildPhase0();
+
+// Build Phases 1-9 with placeholder data (includes ALL sections)
 for (let phase = 1; phase < 10; phase++) {
-    CURRICULUM[phase] = {};
-    for (let w = 0; w < 4; w++) {
-        CURRICULUM[phase][w] = [];
-        for (let d = 0; d < 5; d++) {
-            CURRICULUM[phase][w][d] = {
-                watch: { url: 'https://www.youtube.com/watch?v=qrRqN2HZw98', text: 'Security Fundamentals' },
-                read: { url: 'https://www.securityweek.com/', text: 'Security Week Articles' },
-                lab: { url: 'https://tryhackme.com/r/room/securityoperations', text: 'Security Operations Lab' },
+    CURRICULUM[phase] = [];
+    for (let week = 0; week < 4; week++) {
+        CURRICULUM[phase][week] = [];
+        for (let day = 0; day < 5; day++) {
+            CURRICULUM[phase][week][day] = {
+                watch: { url: 'https://www.youtube.com/watch?v=qrRqN2HZw98', text: 'Watch: Advanced Security Concepts' },
+                read: { url: 'https://www.securityweek.com/', text: 'Read: Security Week Articles' },
+                lab: { url: 'https://tryhackme.com/r/room/securityoperations', text: 'Lab: Security Operations' },
                 notes: '📝 Continue building your cybersecurity knowledge'
             };
         }
     }
 }
 
-console.log('Curriculum loaded:', Object.keys(CURRICULUM).length, 'phases');
+console.log('Curriculum built successfully. Phases:', Object.keys(CURRICULUM).length);
