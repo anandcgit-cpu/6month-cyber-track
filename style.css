@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark: #0a0c10;
+    --card-bg: #1a1d24;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-dim: #b1bac4;
+    --cyan: #2b9c9c;
+    --green: #3fb950;
+    --blue: #2d7ff9;
+    --orange: #f0883e;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.app {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.header-main h1 {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+}
+
+.header-main h1 i {
+    color: var(--cyan);
+    margin-right: 12px;
+}
+
+.header-main p {
+    color: var(--text-dim);
+}
+
+.profile-card {
+    background: #252a33;
+    padding: 16px 20px;
+    border-radius: 12px;
+    min-width: 260px;
+}
+
+.profile-text {
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+}
+
+.profile-text strong {
+    color: var(--cyan);
+    display: block;
+}
+
+.overall-progress {
+    width: 100%;
+}
+
+.progress-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+    color: var(--text-dim);
+}
+
+.progress-bar {
+    background: var(--dark);
+    border-radius: 8px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, var(--cyan), var(--green));
+    width: 0%;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+.progress-stats {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-align: right;
+    margin-top: 6px;
+}
+
+/* Phase Tabs */
+.phase-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+}
+
+.phase-btn {
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.phase-btn:hover {
+    background: var(--card-bg);
+    color: var(--text);
+}
+
+.phase-btn.active {
+    color: var(--cyan);
+    background: var(--card-bg);
+}
+
+/* Weeks */
+.week-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    cursor: pointer;
+    background: #252a33;
+    transition: background 0.2s;
+}
+
+.week-header:hover {
+    background: var(--dark);
+}
+
+.week-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+}
+
+.week-title i {
+    transition: transform 0.2s;
+    color: var(--cyan);
+}
+
+.week-card.open .week-title i {
+    transform: rotate(90deg);
+}
+
+.week-progress {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.week-progress-bar {
+    width: 120px;
+    height: 6px;
+    background: var(--dark);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.week-progress-fill {
+    height: 100%;
+    background: var(--green);
+    width: 0%;
+}
+
+.week-progress-text {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+}
+
+/* Days Grid */
+.days-grid {
+    display: none;
+    padding: 20px;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+}
+
+.week-card.open .days-grid {
+    display: grid;
+}
+
+/* Day Card */
+.day-card {
+    background: #252a33;
+    border-radius: 12px;
+    padding: 16px;
+    border-left: 4px solid var(--border);
+    transition: all 0.2s;
+}
+
+.day-card.today {
+    border-left-color: var(--orange);
+    box-shadow: 0 0 0 1px var(--orange);
+}
+
+.day-card.completed {
+    background: #1e3a2f;
+    border-left-color: var(--green);
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.day-name {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.day-name i {
+    margin-right: 8px;
+}
+
+.check-icon {
+    color: var(--green);
+    font-size: 1.2rem;
+}
+
+/* Activity Slots */
+.slot {
+    margin-bottom: 12px;
+}
+
+.slot-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--cyan);
+    margin-bottom: 4px;
+}
+
+.slot a {
+    color: var(--blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: block;
+    word-break: break-word;
+}
+
+.slot a:hover {
+    text-decoration: underline;
+    color: var(--text);
+}
+
+.slot-note {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+.note-text {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+/* Mark Button */
+.mark-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 8px;
+    background: var(--dark);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.mark-btn:hover {
+    background: var(--green);
+    border-color: var(--green);
+    color: var(--dark);
+}
+
+.mark-btn.done {
+    background: var(--green);
+    color: var(--dark);
+    cursor: default;
+    opacity: 0.7;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--green);
+    color: var(--dark);
+    padding: 12px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.toast.hidden {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+.small {
+    font-size: 0.7rem;
+    margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app {
+        padding: 12px;
+    }
+    
+    .header {
+        flex-direction: column;
+    }
+    
+    .phase-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    
+    .phase-btn {
+        white-space: nowrap;
+    }
+    
+    .days-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .week-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
