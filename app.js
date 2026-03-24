@@ -4,13 +4,16 @@ const Tracker = {
     completedDays: [],
     
     init: function() {
+        console.log('App initializing...');
         this.loadData();
         this.render();
+        console.log('App ready');
     },
     
     loadData: function() {
         const saved = localStorage.getItem(APP.storageKey);
         this.completedDays = saved ? JSON.parse(saved) : [];
+        console.log('Loaded completed days:', this.completedDays.length);
     },
     
     saveData: function() {
@@ -19,6 +22,7 @@ const Tracker = {
     },
     
     render: function() {
+        console.log('Rendering phase:', this.currentPhase);
         this.renderPhases();
         this.renderWeeks();
         this.updateProgress();
@@ -102,6 +106,13 @@ const Tracker = {
     
     renderDay: function(weekIndex, dayIndex) {
         const dayNum = APP.getDayNumber(this.currentPhase, weekIndex, dayIndex);
+        
+        // Check if CURRICULUM exists
+        if (!CURRICULUM || !CURRICULUM[this.currentPhase] || !CURRICULUM[this.currentPhase][weekIndex]) {
+            console.error('Curriculum missing for:', this.currentPhase, weekIndex);
+            return this.renderErrorDay(dayNum, dayIndex);
+        }
+        
         const content = CURRICULUM[this.currentPhase][weekIndex][dayIndex];
         const completed = this.completedDays.includes(dayNum);
         const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -120,15 +131,15 @@ const Tracker = {
             </div>
             <div class="slot">
                 <div class="slot-label"><i class="fas fa-play"></i> WATCH</div>
-                <a href="${content.watch.url}" target="_blank">${content.watch.text}</a>
+                <a href="${content.watch.url}" target="_blank" rel="noopener noreferrer">${content.watch.text}</a>
             </div>
             <div class="slot">
                 <div class="slot-label"><i class="fas fa-book"></i> READ</div>
-                <a href="${content.read.url}" target="_blank">${content.read.text}</a>
+                <a href="${content.read.url}" target="_blank" rel="noopener noreferrer">${content.read.text}</a>
             </div>
             <div class="slot">
                 <div class="slot-label"><i class="fas fa-flask"></i> LAB</div>
-                <a href="${content.lab.url}" target="_blank">${content.lab.text}</a>
+                <a href="${content.lab.url}" target="_blank" rel="noopener noreferrer">${content.lab.text}</a>
             </div>
             <div class="slot">
                 <div class="slot-label"><i class="fas fa-pen"></i> NOTES</div>
@@ -151,13 +162,29 @@ const Tracker = {
         return card;
     },
     
+    renderErrorDay: function(dayNum, dayIndex) {
+        const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+        const card = document.createElement('div');
+        card.className = 'day-card';
+        card.dataset.day = dayNum;
+        card.innerHTML = `
+            <div class="day-header">
+                <div class="day-name">Day ${dayNum}: ${dayNames[dayIndex]}</div>
+            </div>
+            <div class="slot">
+                <div class="slot-label">Content loading...</div>
+                <div>Please refresh the page</div>
+            </div>
+        `;
+        return card;
+    },
+    
     markDay: function(dayNum, button, card) {
         if (this.completedDays.includes(dayNum)) return;
         
         this.completedDays.push(dayNum);
         this.saveData();
         
-        // Update UI
         button.textContent = '✓ Completed';
         button.classList.add('done');
         button.disabled = true;
@@ -170,17 +197,16 @@ const Tracker = {
             header.appendChild(check);
         }
         
-        // Update week progress
         this.updateWeekProgress(dayNum);
         
-        // Sync to Google Sheets
-        GoogleSync.sync(dayNum, this.completedDays, (res) => {
-            this.showToast();
-        });
+        if (typeof GoogleSync !== 'undefined') {
+            GoogleSync.sync(dayNum, this.completedDays, () => {});
+        }
+        
+        this.showToast();
     },
     
     updateWeekProgress: function(dayNum) {
-        // Find and update the week containing this day
         for (let p = 0; p < APP.phases.length; p++) {
             const phase = APP.phases[p];
             const phaseEnd = phase.startDay + (phase.weeks * 5) - 1;
@@ -222,8 +248,6 @@ const Tracker = {
     },
     
     highlightToday: function() {
-        // For demo, highlight day 1
-        // In production, calculate based on start date
         const todayDay = 1;
         const todayCard = document.querySelector(`.day-card[data-day="${todayDay}"]`);
         if (todayCard) {
@@ -235,13 +259,15 @@ const Tracker = {
     showToast: function() {
         const toast = document.getElementById('toastMsg');
         if (!toast) return;
-        
         toast.classList.remove('hidden');
         setTimeout(() => toast.classList.add('hidden'), 3000);
     }
 };
 
-// Start app
 document.addEventListener('DOMContentLoaded', () => {
-    Tracker.init();
+    if (typeof APP !== 'undefined' && typeof CURRICULUM !== 'undefined') {
+        Tracker.init();
+    } else {
+        console.error('APP or CURRICULUM not loaded');
+    }
 });
