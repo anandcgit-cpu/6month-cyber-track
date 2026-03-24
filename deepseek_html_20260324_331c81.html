@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0c10">
+    <title>Cybersecurity Career Tracker | 6-Month Journey to Analyst</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="title-section">
+                    <h1>
+                        <i class="fas fa-shield-haltered"></i>
+                        Cybersecurity Career Tracker
+                    </h1>
+                    <p class="subtitle">6-Month Journey to Security Analyst • 240 Days • 90 Minutes/Day</p>
+                </div>
+                <div class="profile-badge">
+                    <div class="profile-info">
+                        <strong>IT Manager, 11 yrs</strong>
+                        <span>BTech CS • Goal: Security Analyst</span>
+                    </div>
+                    <div class="overall-progress-container">
+                        <div class="progress-label">
+                            <span>Overall Progress</span>
+                            <span id="overall-percent">0%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="overall-progress-fill"></div>
+                        </div>
+                        <div class="progress-stats">
+                            <span id="completed-days-count">0</span> / <span id="total-days-count">240</span> days
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Phase Tabs -->
+        <div class="phase-tabs" id="phase-tabs">
+            <!-- Dynamic from JavaScript -->
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <div class="weeks-container" id="weeks-container">
+                <!-- Dynamic week accordions will be rendered here -->
+            </div>
+        </main>
+
+        <!-- Sync Status Toast -->
+        <div id="toast" class="toast hidden">
+            <i class="fas fa-check-circle"></i>
+            <span>Progress synced to Google Sheets</span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>📘 Daily study: 90 minutes • Weekdays only • Zero budget</p>
+            <p class="footer-note">✅ Completed days auto-save locally & sync to cloud • Click week to expand</p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="data.js"></script>
+    <script src="google-sheets.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
