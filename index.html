@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Security Tracker</title>
+    <title>Cyber Security Tracker | 6-Month Journey</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -111,32 +111,36 @@
             }
         };
 
-        // ========== CURRICULUM DATA ==========
+        // ========== CURRICULUM DATA WITH WATCH/READ/LAB ==========
         const CURRICULUM = {};
         
-        // Build Phase 0 with complete data
+        // Build Phase 0 with complete data (Watch, Read, Lab, Notes)
         const phase0Weeks = [];
+        
+        // Week 1 data - complete with all sections
         const week1Data = [
-            { watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: 'Watch: Cybersecurity Fundamentals', read: 'https://www.cisa.gov/cybersecurity-basics', readText: 'Read: CISA Basics', lab: 'https://tryhackme.com/r/room/introtocyber', labText: 'Lab: TryHackMe Intro', notes: '📝 CIA triad, basic security concepts' },
-            { watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: 'Watch: Security Principles', read: 'https://csrc.nist.gov/glossary', readText: 'Read: NIST Glossary', lab: 'https://tryhackme.com/r/room/securityprinciples', labText: 'Lab: Security Principles', notes: '📝 Authentication, authorization, accounting' },
-            { watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: 'Watch: CIA Triad', read: 'https://www.sans.org/security-resources/', readText: 'Read: SANS Reading', lab: 'https://tryhackme.com/r/room/introtois', labText: 'Lab: InfoSec Intro', notes: '📝 Confidentiality, Integrity, Availability' },
-            { watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: 'Watch: Threats & Vulnerabilities', read: 'https://owasp.org/www-project-top-ten/', readText: 'Read: OWASP Top 10', lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: 'Lab: Vulnerabilities 101', notes: '📝 Risk assessment basics' },
-            { watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: 'Watch: Security Controls', read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: 'Read: ISO 27001', lab: 'https://tryhackme.com/r/room/securityframeworks', labText: 'Lab: Security Frameworks', notes: '📝 Administrative, technical, physical controls' }
+            { watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: '🎬 Cybersecurity Fundamentals', read: 'https://www.cisa.gov/cybersecurity-basics', readText: '📖 CISA Cybersecurity Basics', lab: 'https://tryhackme.com/r/room/introtocyber', labText: '💻 TryHackMe: Intro to Cyber Security', notes: '📝 CIA triad, basic security concepts' },
+            { watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: '🎬 Security Principles', read: 'https://csrc.nist.gov/glossary', readText: '📖 NIST Cybersecurity Glossary', lab: 'https://tryhackme.com/r/room/securityprinciples', labText: '💻 TryHackMe: Security Principles', notes: '📝 Authentication, authorization, accounting' },
+            { watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: '🎬 CIA Triad Deep Dive', read: 'https://www.sans.org/security-resources/', readText: '📖 SANS Reading Room', lab: 'https://tryhackme.com/r/room/introtois', labText: '💻 TryHackMe: Intro to Information Security', notes: '📝 Confidentiality, Integrity, Availability' },
+            { watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: '🎬 Threats & Vulnerabilities', read: 'https://owasp.org/www-project-top-ten/', readText: '📖 OWASP Top 10', lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: '💻 TryHackMe: Vulnerabilities 101', notes: '📝 Risk assessment basics' },
+            { watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: '🎬 Security Controls', read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: '📖 ISO 27001 Overview', lab: 'https://tryhackme.com/r/room/securityframeworks', labText: '💻 TryHackMe: Security Frameworks', notes: '📝 Administrative, technical, physical controls' }
         ];
         
+        // Week 2 data
         const week2Data = [
-            { watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: 'Watch: Cybersecurity Review', read: 'https://www.cisa.gov/cybersecurity-basics', readText: 'Read: CISA Review', lab: 'https://tryhackme.com/r/room/introtocyber', labText: 'Lab: TryHackMe Review', notes: '📝 Review and practice' },
-            { watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: 'Watch: Security Principles Review', read: 'https://csrc.nist.gov/glossary', readText: 'Read: NIST Review', lab: 'https://tryhackme.com/r/room/securityprinciples', labText: 'Lab: Principles Lab', notes: '📝 Apply to scenarios' },
-            { watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: 'Watch: CIA Triad Examples', read: 'https://www.sans.org/security-resources/', readText: 'Read: SANS Articles', lab: 'https://tryhackme.com/r/room/introtois', labText: 'Lab: InfoSec Lab', notes: '📝 Real-world examples' },
-            { watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: 'Watch: Vulnerability Assessment', read: 'https://owasp.org/www-project-top-ten/', readText: 'Read: OWASP Deep Dive', lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: 'Lab: Vulns Lab', notes: '📝 Identify vulnerabilities' },
-            { watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: 'Watch: Controls Review', read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: 'Read: ISO Controls', lab: 'https://tryhackme.com/r/room/securityframeworks', labText: 'Lab: Frameworks Lab', notes: '📝 Map controls to requirements' }
+            { watch: 'https://www.youtube.com/watch?v=inWWhr5tnEA', watchText: '🎬 Cybersecurity Review', read: 'https://www.cisa.gov/cybersecurity-basics', readText: '📖 CISA Review', lab: 'https://tryhackme.com/r/room/introtocyber', labText: '💻 TryHackMe Review', notes: '📝 Review and practice' },
+            { watch: 'https://www.youtube.com/watch?v=5k9e1xYp3HI', watchText: '🎬 Security Principles Review', read: 'https://csrc.nist.gov/glossary', readText: '📖 NIST Review', lab: 'https://tryhackme.com/r/room/securityprinciples', labText: '💻 Principles Lab', notes: '📝 Apply to scenarios' },
+            { watch: 'https://www.youtube.com/watch?v=z5nc9MDbvkw', watchText: '🎬 CIA Triad Examples', read: 'https://www.sans.org/security-resources/', readText: '📖 SANS Articles', lab: 'https://tryhackme.com/r/room/introtois', labText: '💻 InfoSec Lab', notes: '📝 Real-world examples' },
+            { watch: 'https://www.youtube.com/watch?v=sdpxddDzXfE', watchText: '🎬 Vulnerability Assessment', read: 'https://owasp.org/www-project-top-ten/', readText: '📖 OWASP Deep Dive', lab: 'https://tryhackme.com/r/room/vulnerabilities101', labText: '💻 Vulns Lab', notes: '📝 Identify vulnerabilities' },
+            { watch: 'https://www.youtube.com/watch?v=auW3bT7XJbM', watchText: '🎬 Controls Review', read: 'https://www.iso.org/isoiec-27001-information-security.html', readText: '📖 ISO Controls', lab: 'https://tryhackme.com/r/room/securityframeworks', labText: '💻 Frameworks Lab', notes: '📝 Map controls to requirements' }
         ];
         
         phase0Weeks[0] = week1Data;
         phase0Weeks[1] = week2Data;
-        phase0Weeks[2] = week1Data.map(d => ({ ...d, notes: '📝 ' + d.notes.split('📝 ')[1] + ' - Practice' }));
-        phase0Weeks[3] = week2Data.map(d => ({ ...d, notes: '📝 ' + d.notes.split('📝 ')[1] + ' - Apply' }));
+        phase0Weeks[2] = week1Data.map(d => ({ ...d, notes: d.notes + ' - Practice' }));
+        phase0Weeks[3] = week2Data.map(d => ({ ...d, notes: d.notes + ' - Apply' }));
         
+        // Convert to the format expected by renderer
         CURRICULUM[0] = phase0Weeks.map(week => 
             week.map(day => ({
                 watch: { url: day.watch, text: day.watchText },
@@ -146,17 +150,17 @@
             }))
         );
         
-        // Fill phases 1-9
+        // Fill phases 1-9 with placeholder data (still has all sections)
         for (let p = 1; p < 10; p++) {
             CURRICULUM[p] = [];
             for (let w = 0; w < 4; w++) {
                 CURRICULUM[p][w] = [];
                 for (let d = 0; d < 5; d++) {
                     CURRICULUM[p][w][d] = {
-                        watch: { url: 'https://www.youtube.com/watch?v=qrRqN2HZw98', text: 'Watch: Security Fundamentals' },
-                        read: { url: 'https://www.securityweek.com/', text: 'Read: Security Week' },
-                        lab: { url: 'https://tryhackme.com/r/room/securityoperations', text: 'Lab: Security Ops' },
-                        notes: '📝 Continue building knowledge'
+                        watch: { url: 'https://www.youtube.com/watch?v=qrRqN2HZw98', text: '🎬 Advanced Security Concepts' },
+                        read: { url: 'https://www.securityweek.com/', text: '📖 Security Week Articles' },
+                        lab: { url: 'https://tryhackme.com/r/room/securityoperations', text: '💻 Security Operations Lab' },
+                        notes: '📝 Continue building your cybersecurity knowledge'
                     };
                 }
             }
@@ -245,9 +249,9 @@
                 card.dataset.day = dayNum;
                 card.innerHTML = `
                     <div class="day-header"><div class="day-name"><i class="fas fa-calendar-day"></i>Day ${dayNum}: ${dayNames[dayIndex]}</div>${completed ? '<i class="fas fa-check-circle check-icon"></i>' : ''}</div>
-                    <div class="slot"><div class="slot-label"><i class="fas fa-play"></i> WATCH</div><a href="${content.watch.url}" target="_blank">${content.watch.text}</a></div>
-                    <div class="slot"><div class="slot-label"><i class="fas fa-book"></i> READ</div><a href="${content.read.url}" target="_blank">${content.read.text}</a></div>
-                    <div class="slot"><div class="slot-label"><i class="fas fa-flask"></i> LAB</div><a href="${content.lab.url}" target="_blank">${content.lab.text}</a></div>
+                    <div class="slot"><div class="slot-label"><i class="fas fa-play"></i> WATCH</div><a href="${content.watch.url}" target="_blank" rel="noopener noreferrer">${content.watch.text}</a></div>
+                    <div class="slot"><div class="slot-label"><i class="fas fa-book"></i> READ</div><a href="${content.read.url}" target="_blank" rel="noopener noreferrer">${content.read.text}</a></div>
+                    <div class="slot"><div class="slot-label"><i class="fas fa-flask"></i> LAB</div><a href="${content.lab.url}" target="_blank" rel="noopener noreferrer">${content.lab.text}</a></div>
                     <div class="slot"><div class="slot-label"><i class="fas fa-pen"></i> NOTES</div><div class="note-text">${content.notes}</div><div class="slot-note">✍️ Write in your notebook</div></div>
                     <button class="mark-btn ${completed ? 'done' : ''}" ${completed ? 'disabled' : ''}>${completed ? '✓ Completed' : '✓ Mark Done'}</button>
                 `;
