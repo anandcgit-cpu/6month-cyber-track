@@ -270,4 +270,17 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error('APP or CURRICULUM not loaded');
     }
-});
+});renderDay: function(weekIndex, dayIndex) {
+    const dayNum = APP.getDayNumber(this.currentPhase, weekIndex, dayIndex);
+    const content = CURRICULUM[this.currentPhase][weekIndex][dayIndex];
+    
+    // Important: Check if content has watch.url or watch.url
+    const watchUrl = content.watch.url || content.watch;
+    const watchText = content.watch.text || content.watchText;
+    const readUrl = content.read.url || content.read;
+    const readText = content.read.text || content.readText;
+    const labUrl = content.lab.url || content.lab;
+    const labText = content.lab.text || content.labText;
+    
+    // Rest of the render code...
+}
